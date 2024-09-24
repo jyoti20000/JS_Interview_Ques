@@ -1,0 +1,207 @@
+Q1. Explain the concept of strict mode in JavaScript and discuss its characteristics and benefits.
+JavaScript Strict Mode is a feature introduced in ECMAScript 5 that enables developers to write code or functions in a "strict" operational environment. When enabled, strict mode imposes stricter rules and throws errors for various types of mistakes, including silent errors, making debugging easier and reducing the chances of errors.
+
+Some of the characteristics of strict mode in JavaScript are:
+
+ a) Prohibition of duplicate arguments: In strict mode, developers are not allowed to use duplicate arguments in function declarations. This helps in avoiding confusion and potential errors caused by multiple arguments with the same name.
+ b) Restrictions on using certain names: In strict mode, JavaScript keywords, such as "eval" and "arguments," cannot be used as function or parameter names. This prevents accidental conflicts with built-in language features and enhances code clarity.
+ c) Use of "use strict" keyword: Strict mode is enabled by including the statement "use strict" at the beginning of a script or function. This ensures that strict mode is applied to the entire script or function block, providing consistent behavior across different environments.
+ d) Prohibition of global variables: Strict mode prevents the creation of unintentional global variables. Without strict mode, variables created without declaring them using "var," "let," or "const" would become global variables. In strict mode, such implicit global variable declarations are not allowed, promoting better encapsulation and reducing unexpected behavior.
+ 
+
+Q2. What type system does JavaScript follow, static typing or dynamic typing?
+JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during runtime, unlike in statically typed languages where the type is checked during compile-time. This means that variables in JavaScript are not associated with a specific type and can hold values of different types throughout their lifecycle.
+
+For example, let's consider a variable x in JavaScript:
+
+let x = 10; // Initially assigned a number
+console.log(typeof x); // Output: number
+
+x = "Hello World!"; // Reassigned with a string value
+console.log(typeof x); // Output: string
+In the above code, the variable x is initially assigned a number value 10. When we use the typeof operator to check its type, it returns "number". However, later in the code, we reassign x with the string value "Hello World!". Now, when we check the type of x again using typeof, it returns "string". This showcases the dynamic nature of JavaScript, where variables can change their type during the execution of the program.
+
+ 
+
+Q3. How is the NaN property utilized in JavaScript?
+In JavaScript, the NaN property stands for "Not-a-Number." It is used to indicate when a value is not a valid numeric value.When we apply the typeof operator to NaN, it returns "number," indicating that it is considered a numeric value.
+
+To check whether a value is NaN, we can utilize the isNaN() function. This function converts the provided value to a Number type and checks if it is NaN. If the value is NaN, the function returns true; otherwise, it returns false.
+
+Here are some examples:
+
+ **) isNaN("gfg") // Returns true because "gfg" cannot be converted to a valid number
+ **) isNaN(121) // Returns false as 121 is a valid number
+ 
+Q4. What is the concept of currying in JavaScript, and how does it work?
+Currying is a technique in JavaScript where a function with multiple arguments is transformed into a series of functions, each taking one or fewer arguments. The resulting curried function allows you to invoke it partially by providing one argument at a time.
+
+Example :
+
+function multiply(a) {
+ return function(b) {
+   return a * b;
+ };
+}
+
+var multiplyByTwo = multiply(2);
+console.log(multiplyByTwo(4)); // Output: 8
+console.log(multiplyByTwo(6)); // Output: 12
+
+In this example, the multiply function is curried. It takes an argument a and returns a new function that expects another argument b. The returned function multiplies a with b and returns the result.
+
+By invoking multiply(2), we create a specialized version of the function called multiplyByTwo. This new function is configured to multiply any number by 2. We can then call multiplyByTwo with different arguments, such as 4 and 6, to get the respective multiplication results.
+
+ 
+
+Q5. What is the concept of object prototypes in JavaScript?
+In JavaScript, object prototypes serve as blueprints for inheritance. Objects inherit properties and methods from their prototypes, forming a chain. The Object.prototype is at the top of this chain.Prototypes allow objects to access properties and methods even if they are not directly defined on the object. The JavaScript engine searches the prototype chain when a property or method is not found on the object itself.For example, arrays inherit methods like push() from the Array prototype. This enables code like arr.push(2) to work, even if push() is not defined on arr directly.
+
+ 
+
+Q6. What does the term "memoization" refer to in JavaScript?
+Memoization in JavaScript is a caching technique where the return value of a function is stored based on its parameters. If the function is called again with the same parameters, the cached value is returned instead of recomputing the result. This improves performance by avoiding redundant computations. To implement memoization, a cache is used to store the computed results, and the function checks the cache before performing any computations.
+
+ 
+
+Q7. How do Async/Await and Generators differ in their usage to achieve similar functionality?
+Generator functions and Async/Await functions are two approaches in JavaScript for handling asynchronous operations.
+Generator functions use the "yield" keyword to produce one output at a time, allowing for fine-grained control over the execution flow. They are suitable for handling data streams and implementing lazy evaluation.
+Async/Await functions execute sequentially, providing a more synchronous-like coding style. They are designed to handle promises, ensuring the result or throwing an error.
+Generator functions return an object with a value and a boolean property, while Async/Await functions directly return the result or throw an error.
+Generators offer control and flexibility, while Async/Await simplifies asynchronous code.
+ 
+
+Q8. How does prototypal inheritance differ from classical inheritance?
+Classical inheritance uses classes to define objects and their relationships, while prototypal inheritance involves creating objects directly from other objects. In classical inheritance, objects are created based on predefined classes and inherit properties and behaviors from parent classes. In contrast, prototypal inheritance allows objects to be cloned and linked through a prototype object, which serves as a blueprint for shared properties and methods. Classical inheritance relies on class definitions and a hierarchical structure, while prototypal inheritance enables more dynamic object creation through object cloning and linking.
+
+ 
+
+Q9. What is the concept of arrow functions in JavaScript?
+Arrow functions in JavaScript, introduced in ES6, provide a concise syntax for declaring functions. They are primarily used as function expressions. Compared to traditional functions, arrow functions have shorter syntax and do not bind their own "this" value. Instead, they inherit it from the parent scope, which is typically the "window" or "global" object.
+
+Here's an example of an arrow function:
+
+// Traditional function expression
+var multiplyBy2 = function(num){
+  return num * 2;
+}
+
+// Arrow function expression
+var arrowMultiplyBy2 = num => num * 2;
+In the example above, the "multiplyBy2" function uses the traditional function expression syntax, while the "arrowMultiplyBy2" function uses the arrow function syntax. Both functions achieve the same functionality of multiplying a number by 2.
+
+ 
+
+Q10. What is the Temporal Dead Zone in JavaScript?
+The Temporal Dead Zone (TDZ) is a behavior specific to variables declared with the let and const keywords in JavaScript. It refers to the period between the creation of a variable and its initialization, during which any attempt to access the variable results in a reference error. The TDZ serves as a safeguard against using variables before they are declared, promoting better coding practices and reducing potential runtime errors.
+
+ 
+
+Q11. What is the Document Object Model (DOM) and how is the document object used?
+The DOM, or Document Object Model, is a programming interface that represents the structure of an HTML or XML document. It provides a way to access and modify the content of a web page dynamically. The document object, specifically, represents the HTML document itself and allows developers to interact with its elements and content. It is used to access and change HTML content, handle events, and ensure cross-browser compatibility.
+
+ 
+
+Q12. What is the distinction between loose equality (==) and strict equality (===) in JavaScript?
+The == operator checks for loose equality, converting operands to a common type if needed. The === operator checks for strict equality, comparing both value and data type. It's recommended to use === for precise and reliable equality comparisons.
+
+ 
+
+Q13. When handling events in JavaScript, what distinguishes the usage of event.preventDefault() from event.stopPropagation() in terms of their functionality?
+In JavaScript, the event.preventDefault() method is employed to prevent the default behavior of an element, such as preventing form submission or anchor navigation. In contrast, the event.stopPropagation() method halts the event propagation, preventing it from further bubbling or capturing phases.
+
+ 
+
+Q14. How do undefined and null values differ in JavaScript?
+In JavaScript, undefined represents a variable that has been declared but not assigned a value, while null is an explicitly assigned value indicating the intentional absence of an object value.
+
+ 
+
+Q15. Why is the "debugger" keyword used in JavaScript?
+The "debugger" keyword in JavaScript is used to set breakpoints within the code itself. When encountered, the debugger statement pauses the execution of the program at that specific point. It allows developers to manually control the flow of execution, inspect variables, and step through the code line by line. This can be useful for debugging purposes, as it helps identify and resolve issues in the code more effectively. Additionally, when an exception occurs, the debugger will halt the execution, allowing developers to examine the state of the program at that particular line and troubleshoot errors.
+
+ 
+
+Q16. What is your understanding of cookies and how would you create one in JavaScript?
+Cookies are small pieces of data that are sent from a website and stored on the user's machine by the web browser. They are used to remember information and track browsing activity. In JavaScript, you can create a cookie by using the document.cookie property and setting it to a string with the desired key-value pairs and optional attributes like expiration date. For example:
+
+document.cookie = "key1=value1; key2=value2; expires=date";
+This sets a cookie with the keys "key1" and "key2" and their respective values. The expires attribute can be used to specify an expiration date for the cookie.
+
+ 
+
+Q17. What are Closures in JavaScript?
+Closures are a powerful feature in JavaScript that allow developers to create functions with persistent state and access to variables from an outer scope. They are created when a function accesses variables outside of its own scope. This allows for the creation of private variables and functions, as well as the ability to create reusable code through function factories. Closures provide a way to encapsulate data and behavior, making code more modular and flexible.
+
+ 
+
+Q18. What is the distinction between the Document and Window objects in JavaScript?
+In JavaScript, the Document object represents the HTML document loaded in the browser window. It provides methods and properties to manipulate and interact with the content of the document.
+
+On the other hand, the Window object is the global object in the browser environment. It represents the browser window or tab that contains the document. The Window object provides access to various features and functionalities of the browser, such as navigation, history, timing, and interacting with other windows or frames.
+
+ 
+
+Q19. What is the ‘this’ keyword in JavaScript? 
+The 'this' keyword in JavaScript refers to the current object being used as a constructor to assign values to its properties. It allows for dynamic assignment of property values during object creation.
+
+ 
+
+Q20. Is javascript a statically typed or a dynamically typed language?
+JavaScript is indeed a dynamically typed language, meaning that variables are not bound to a specific data type and can hold values of different types throughout the program's execution. This flexibility allows for more versatile coding and simplifies certain aspects of development.
+
+ 
+
+Q21. What is the distinction between the exec() and test() methods in JavaScript?
+a) The test() and exec() methods are RegExp expression methods in JavaScript.
+b) The exec() method is used to search a string for a specific pattern. If a match is found, it returns the matched pattern, otherwise, it returns null.
+c) The test() method is used to check whether a string matches a specific pattern. It returns a Boolean value of true if the pattern is found in the string, and false otherwise.
+ 
+
+Q22. Does JavaScript follow pass-by-reference or pass-by-value semantics?
+JavaScript is a pass-by-value language. When passing variables, including objects, the value is copied and passed. For objects, the value being passed is a reference to the object in memory. Modifying the object's properties inside a function affects the original object, but reassigning the object variable does not affect the original object.
+
+ 
+
+Q23. How do promises simplify asynchronous operations in JavaScript?
+Promises in JavaScript simplify handling asynchronous operations. They have states (pending, fulfilled, rejected) and are created using the Promise constructor. Promises allow for better organization of async code and provide methods like then() and catch() to handle successful and error cases respectively.
+
+ 
+
+Q24. Can you explain the concepts of the rest parameter and spread operator in JavaScript?
+The rest parameter (…) allows a function to accept a variable number of arguments, converting them into an array. It is used in function declarations.
+The spread operator (…) spreads an array or object literals into individual values. It is commonly used in function calls to pass multiple arguments or merge objects.
+ 
+
+Q25. What are the differences between the call(), apply(), and bind() methods in JavaScript and how are they used?
+call():
+
+a) Predefined method in JavaScript.
+b) Invokes a method (function) by specifying the owner object.
+c) Allows an object to use the method (function) of another object.
+d) Accepts arguments separately.
+Example :
+sayHello.call(obj) returns "Hello Sandy".
+person.getAge.call(person2) returns 54.
+saySomething.call(person4, "awesome") returns "John is awesome".
+
+apply():
+
+a) Similar to the call() method but accepts arguments as an array.
+b) Invokes a method (function) by specifying the owner object.
+c) Allows an object to use the method (function) of another object.
+d) Accepts arguments as an array.
+Example :
+saySomething.apply(person4, ["awesome"]) returns "John is awesome".
+
+bind():
+
+a) Returns a new function where the value of "this" keyword is bound to the owner object.
+b) Provides a bound function that can be invoked later.
+c) Can also bind arguments to the function.
+d) Does not invoke the function immediately.
+Example :
+var detailsOfPerson1 = bikeDetails.displayDetails.bind(person1, "TS0122", "Bullet")
+detailsOfPerson1() returns "Vivek, bike details: TS0122, Bullet".
+
